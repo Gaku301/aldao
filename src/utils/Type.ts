@@ -1,4 +1,5 @@
 export type RootStackParamList = {
   StartScreen: undefined;
-  BottomTab: undefined;
+  SelectAnimalScreen: undefined;
+  BottomTab: {name: String};
 };
