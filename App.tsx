@@ -22,12 +22,20 @@ const App = (): JSX.Element => {
         <Stack.Screen
           name="SelectAnimalScreen"
           component={SelectAnimalScreen}
-          options={{headerShown: true}} // TODO: リリース時はfalseに
+          options={{
+            // TODO: リリース時はfalseに
+            headerBackVisible: true,
+            gestureEnabled: false, // スワイプバックを不可とする
+          }}
         />
         <Stack.Screen
           name="BottomTab"
           component={BottomTab}
-          options={{headerShown: true}} // TODO: リリース時はfalseに
+          options={{
+            // TODO: リリース時はheaderShownをfalseに
+            headerShown: true,
+            gestureEnabled: false, // スワイプバックを不可とする
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,20 +1,32 @@
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import {SafeAreaView, ScrollView, Text, View} from 'react-native';
-import {RootTabParamList} from '../utils/Type';
+import {ScrollView} from 'react-native';
+import {RootStackParamList, TabParamList} from '../utils/Type';
+import {CompositeScreenProps} from '@react-navigation/native';
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs';
+import {StackScreenProps} from '@react-navigation/stack';
+import {getAnimal} from '../utils/Animal';
+import {Card, Text} from '@rneui/base';
 
-type Props = NativeStackScreenProps<RootTabParamList, 'Home'>;
+type Props = CompositeScreenProps<
+  BottomTabScreenProps<TabParamList, 'Home'>,
+  StackScreenProps<RootStackParamList>
+>;
 
 const HomeScreen = ({route}: Props): JSX.Element => {
-  console.log(route);
+  const animal = getAnimal(route.params.id);
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View>
-          <Text>Home</Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <ScrollView>
+      <Card>
+        <Card.Title>{animal.name}</Card.Title>
+        <Card.Image
+          source={animal.image}
+          style={{height: 500, marginBottom: 10}}
+        />
+        <Card.Divider>
+          <Text>{animal.description}</Text>
+        </Card.Divider>
+      </Card>
+    </ScrollView>
   );
 };
 

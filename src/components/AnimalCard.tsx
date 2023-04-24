@@ -6,16 +6,17 @@ import type {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../utils/Type';
 import {Colors} from '../utils/Config';
 
-type Props = {
+interface animalType {
+  id: number;
   name: String;
   description: String;
   image: ImageSourcePropType;
-};
+}
 
 /**
  * 動物情報カード
  */
-const AnimalCard = (animal: Props): JSX.Element => {
+const AnimalCard = (animal: animalType): JSX.Element => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList, 'BottomTab'>>();
 
@@ -32,7 +33,10 @@ const AnimalCard = (animal: Props): JSX.Element => {
         containerStyle={{borderRadius: 50}}
         color={Colors.primary}
         onPress={() => {
-          navigation.navigate('BottomTab', {name: animal.name});
+          navigation.navigate('BottomTab', {
+            screen: 'Home',
+            params: {id: animal.id},
+          });
         }}
       />
     </Card>
