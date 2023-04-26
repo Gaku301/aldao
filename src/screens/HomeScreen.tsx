@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {ScrollView, StyleSheet} from 'react-native';
 import {RootStackParamList, TabParamList} from '../utils/Type';
 import {CompositeScreenProps} from '@react-navigation/native';
@@ -15,21 +15,28 @@ type Props = CompositeScreenProps<
 >;
 
 const HomeScreen = ({route}: Props): JSX.Element => {
-  const [dialogVisible, setDialogVisible] = React.useState(false);
+  const [dialogVisible, setDialogVisible] = useState(false);
   const animal = getAnimal(route.params.id);
 
   return (
-    <ScrollView>
-      <Card>
-        <Card.Title>{animal.name}</Card.Title>
-        <Card.Image
-          source={animal.image}
-          style={{height: 500, marginBottom: 10}}
+    <>
+      <ScrollView>
+        <Card>
+          <Card.Title>{animal.name}</Card.Title>
+          <Card.Image
+            source={animal.image}
+            style={{height: 500, marginBottom: 10}}
+          />
+          <Card.Divider>
+            <Text>{animal.description}</Text>
+          </Card.Divider>
+        </Card>
+
+        <ActionDialog
+          visible={dialogVisible}
+          setVisibleFunc={setDialogVisible}
         />
-        <Card.Divider>
-          <Text>{animal.description}</Text>
-        </Card.Divider>
-      </Card>
+      </ScrollView>
       <FAB
         visible={true}
         style={styles.fabButton}
@@ -38,8 +45,7 @@ const HomeScreen = ({route}: Props): JSX.Element => {
         icon={{name: 'pets', color: 'white'}}
         onPress={() => setDialogVisible(true)}
       />
-      <ActionDialog visible={dialogVisible} setVisibleFunc={setDialogVisible} />
-    </ScrollView>
+    </>
   );
 };
 

@@ -6,6 +6,8 @@ import StartScreen from './src/screens/StartScreen';
 import {RootStackParamList} from './src/utils/Type';
 import BottomTab from './src/components/BottomTab';
 import SelectAnimalScreen from './src/screens/SelectAnimalScreen';
+import SelectToyScreen from './src/screens/SelectToyScreen';
+import SelectFoodScreen from './src/screens/SelectFoodScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,6 +28,22 @@ const App = (): JSX.Element => {
             // TODO: リリース時はfalseに
             headerBackVisible: true,
             gestureEnabled: false, // スワイプバックを不可とする
+          }}
+        />
+        <Stack.Screen
+          name="SelectToyScreen"
+          component={SelectToyScreen}
+          options={{
+            // TODO: リリース時はfalseに
+            headerBackVisible: true,
+          }}
+        />
+        <Stack.Screen
+          name="SelectFoodScreen"
+          component={SelectFoodScreen}
+          options={{
+            // TODO: リリース時はfalseに
+            headerBackVisible: true,
           }}
         />
         <Stack.Screen

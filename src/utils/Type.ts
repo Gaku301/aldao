@@ -7,6 +7,8 @@ export type RootStackParamList = {
   StartScreen: undefined;
   SelectAnimalScreen: undefined;
   BottomTab: NavigatorScreenParams<TabParamList>;
+  SelectToyScreen: undefined;
+  SelectFoodScreen: undefined;
 };
 
 /**

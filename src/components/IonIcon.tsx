@@ -3,9 +3,9 @@ import React from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 type IconProps = {
-  name?: String; // icon name
-  size: Number; // icon size
-  color: String; // icon color
+  name: string; // icon name
+  size: number; // icon size
+  color: string; // icon color
 };
 
 /**
